@@ -27,8 +27,8 @@
   The `Vehicle` class uses an enum to difine the three types of vehicles that can be created: bike, car, truck.
 
 - **Methods:** The `ParkingGarage` and `Vehicle` classes both use a Constructor method so they can be initialized with their fields.
-  Additionally The `Vehicle` class has the Methods; `Park`, `Unpark`, and `Status` along with two helper methods; 
-- `GetRequiredSize`, and `GetSpaceSize`. 
+  Additionally The `Vehicle` class has the Methods; `Park`, `Unpark`, and `Status` along with two helper methods:
+  `GetRequiredSize`, and `GetSpaceSize`. 
 
 ## Design Choices
 
@@ -46,5 +46,4 @@ it wouldn't make sense to allow vehicles into spaces that are either too large o
 
 ## Things That I Could Extend
 
-- **Status Method:** I could add to the ammount of information that the Status method returns
-  so that it returns more than whether a vehicle is parked or not. For example I could return the money owed for a car.
+- **Status Method:** I could add to the amount of information that the Status method returns so that it returns more than whether a vehicle is parked or not. Some examples could be, returning the floor number alongside the space number for parked cars or showing the money owed from ticket fees. 
