@@ -24,21 +24,21 @@ public class Vehicle
     public string Park(ParkingGarage garage, int spaceNumber, int duration)
     {
         bool isWithinRange = garage._spaceIds.Any(r => spaceNumber >= r.Min && spaceNumber <= r.Max);
-        const string INVALID_DURATION_MESSAGE = "Duration must be a value greater than zero";
+        const string INVALID_DURATION_MESSAGE = "Duration must be a value greater than zero.";
 
         if (!isWithinRange)
         {
-            return $"Parking space {spaceNumber} does not exist";
-        }
-
-        if (garage._parkedVehicles.ContainsKey(spaceNumber))
-        {
-            return $"Parking space {spaceNumber} occupied";
+            return $"Parking space {spaceNumber} does not exist.";
         }
 
         if (_isParked)
         {
-            return $"Could not park {_name} in space {spaceNumber}, it is already parked in space {_spaceNumber}";
+            return $"Could not park {_name} in space {spaceNumber}, it is already parked in space {_spaceNumber}.";
+        }
+
+        if (garage._parkedVehicles.ContainsKey(spaceNumber))
+        {
+            return $"Parking space {spaceNumber} is occupied.";
         }
 
         if (duration <= 0)
@@ -50,7 +50,7 @@ public class Vehicle
 
         if (spaceSize != GetRequiredSize(_type))
         {
-            return $"Could not park {_name} in space {spaceNumber}, it is the wrong size";
+            return $"Could not park {_name} in space {spaceNumber}, it is the wrong size.";
         }
 
         garage._parkedVehicles.Add(spaceNumber, (_name, duration));
@@ -58,7 +58,7 @@ public class Vehicle
         _spaceSize = spaceSize;
         _isParked = true;
 
-        return $"Successfully parked {_name} in space {spaceNumber} for {duration} hours";
+        return $"Successfully parked {_name} in space {spaceNumber} for {duration} hours.";
     }
 
     public string Status()
@@ -101,7 +101,7 @@ public class Vehicle
         };
     }
 
-    private static ParkingSpot GetSpaceSize(ParkingGarage garage, int spaceNumber)
+    public static ParkingSpot GetSpaceSize(ParkingGarage garage, int spaceNumber)
     {
         foreach ((int Min, int Max, ParkingSpot size) in garage._spaceIds)
         {
